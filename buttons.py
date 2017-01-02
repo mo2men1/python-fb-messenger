@@ -1,6 +1,13 @@
+from  abc import ABC, abstractmethod
+
 class Button(object):
+	@abstractmethod
 	def __init__(self, button_type):
 		self.type = button_type
+
+	def as_dict(self):
+		temp = dict(self.__dict__)
+		return temp
 
 class UrlButton(Button):
 	def __init__(self, title, url, **kwargs):
