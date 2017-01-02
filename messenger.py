@@ -50,6 +50,6 @@ class Messenger(object):
 		post_url = 'https://graph.facebook.com/v2.6/me/messages?access_token=' + self.token
 		post_msg = json.dumps(msg_data)
 		status = requests.post(post_url, headers={"content-type": "application/json"}, data=post_msg)
-		# if status.status_code == 400:
-		# 	pprint(status.json())
+		if status.status_code == 400:
+			pprint(status.json())
 
