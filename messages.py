@@ -1,4 +1,5 @@
 from  abc import ABC, abstractmethod
+from collections import namedtuple
 
 class Message(ABC):
 	@abstractmethod
@@ -15,7 +16,7 @@ class TextMessage(Message):
 		self.text = text
 
 	def as_dict(self):
-		return {"text": text}
+		return {"text": self.text}
 
 class TemplateMessage(Message, ABC):
 	@abstractmethod
@@ -31,3 +32,6 @@ class TemplateMessage(Message, ABC):
 				"payload": 	self.__dict__
 			}
 		}
+
+IncomingMessage = namedtuple('IncomingMessage', ['sender', 'mid', 'seq', 'text', 'attachments', 'sticker_id'])
+IncomingMessage.__new__.__defaults__ = (None,) * 4
