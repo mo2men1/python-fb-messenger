@@ -1,4 +1,4 @@
-from messages import TemplateMessage
+from .messages import TemplateMessage
 
 class ButtonTemplate(TemplateMessage):
 	def __init__(self, text, buttons):
@@ -39,5 +39,9 @@ class ListTemplate(TemplateMessage):
 		elements = []
 		for element in self.elements:
 			elements.append(element.as_dict())
+		buttons = []
+		for button in self.buttons:
+			buttons.append(button.__dict__)
 		temp['attachment']['payload']['elements'] = elements
+		temp['attachment']['payload']['buttons'] = buttons
 		return temp
