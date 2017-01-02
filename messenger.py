@@ -26,7 +26,6 @@ class Messenger(object):
 						self.messages.append(message)
 
 	def send(self, fbid, message):
-		print("test")
 		msg_data = {
 	                  	"recipient": {
 	                  		"id": fbid
@@ -35,16 +34,14 @@ class Messenger(object):
 	      			}
 		self.call_send_api(msg_data)
 
-	# def seen(self, fbid):
-	# 	msg_data = {
-	# 		"recipient": {
-	# 			"id": fbid
-	# 		},
-	# 		"sender_action": "mark_seen",
-	# 		# "message": {},
-	# 	}
-
-		# self.call_send_api(msg_data)
+	def sender_action(self, fbid, type):
+		msg_data = {
+			"recipient": {
+				"id": fbid
+			},
+			"sender_action": type,
+		}
+		self.call_send_api(msg_data)
 		
 	def call_send_api(self, msg_data):
 		post_url = 'https://graph.facebook.com/v2.6/me/messages?access_token=' + self.token
