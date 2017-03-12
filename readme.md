@@ -12,6 +12,10 @@ FB_PAGE_ACCESS_TOKEN = "EAALJX..."
 
 ```
 or send the token to Messenger module constructor directly.
+```python
+	req = json.loads(request.body.decode('utf-8'))
+	messenger = Messenger(req, "EAALJX...")
+```
 
 views.py:
 
